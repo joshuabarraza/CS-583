@@ -3,7 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Basket : MonoBehaviour {
-    void Start () {} // We’ll add code to Start() in Code Listing 29.12
+    public ScoreCounter scoreCounter;
+
+    void Start() {
+        // Find a GameObject named ScoreCounter in the Scene Hierarchy
+        GameObject scoreGO = GameObject.Find( "ScoreCounter"); // b
+        // Get the ScoreCounter (Script) component of scoreGO
+        scoreCounter = scoreGO.GetComponent<ScoreCounter>();
+        // c
+    }
     void Update () {
         // Get the current screen position of the mouse from Input
         Vector3 mousePos2D = Input.mousePosition;
@@ -23,4 +31,18 @@ public class Basket : MonoBehaviour {
         pos.x = mousePos3D.x;
         this.transform.position = pos;
     }
+    void OnCollisionEnter( Collision coll ) {
+        GameObject collidedWith = coll.gameObject;
+        if (collidedWith.CompareTag("Apple")) {
+            Destroy(collidedWith);
+            scoreCounter.score += 100;
+            HighScore.TRY_SET_HIGH_SCORE(scoreCounter.score);
+        }
+        else if (collidedWith.CompareTag("Bug")) {
+            Destroy(collidedWith);
+            scoreCounter.score -= 100;
+            HighScore.TRY_SET_HIGH_SCORE(scoreCounter.score);
+        }
+    }
+
 }

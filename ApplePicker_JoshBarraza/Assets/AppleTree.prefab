@@ -284,7 +284,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -300,8 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d05ce79955b4b46b7e1c1e6e18aac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  applePrefab: {fileID: 0}
-  speed: 10
+  applePrefab: {fileID: 5715372170384745883, guid: d8e745383af6f4dc4a86b8067b99dfd3, type: 3}
+  speed: 15
   leftAndRightEdge: 24
   changeDirChance: 0.008
-  appleDropDelay: 1
+  appleDropDelay: 0.8
