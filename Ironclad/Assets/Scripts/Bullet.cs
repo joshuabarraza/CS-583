@@ -14,8 +14,12 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Player")) return;
 
-        // Play appropriate sound based on what was hit
-        if (other.CompareTag("Crate"))
+        if (other.CompareTag("Enemy"))
+        {
+            EnemyHealth eh = other.GetComponent<EnemyHealth>();
+            if (eh != null) eh.TakeDamage(1);
+        }
+        else if (other.CompareTag("Crate"))
         {
             SoundManager.Instance.PlaySound(
                 SoundManager.Instance.crateHitClip,
@@ -31,7 +35,7 @@ public class Bullet : MonoBehaviour
                 SoundManager.Instance.wallHitVolume
             );
         }
-
+        
         Destroy(gameObject);
     }
 }

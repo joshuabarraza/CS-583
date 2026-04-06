@@ -11,15 +11,14 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton pattern - only one GameManager ever exists
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // persists between scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // destroy duplicate if one already exists
+            Destroy(gameObject);
         }
     }
 
@@ -27,19 +26,17 @@ public class GameManager : MonoBehaviour
     public void AddCredits(int amount)
     {
         shellCredits += amount;
-        Debug.Log("Shell Credits: " + shellCredits);
+        if (UIManager.Instance != null)
+            UIManager.Instance.UpdateScore(shellCredits);
     }
 
-    // Call this from any script to damage the player
     public void TakeDamage(int amount)
     {
         playerHealth -= amount;
-        Debug.Log("Player Health: " + playerHealth);
+        UIManager.Instance.UpdateHealth(playerHealth);
 
-        if (playerHealth <= 0)
-        {
+        if (playerHealth <= 0) {
             Debug.Log("Game Over");
-            // We'll hook up the game over screen later
         }
     }
 }

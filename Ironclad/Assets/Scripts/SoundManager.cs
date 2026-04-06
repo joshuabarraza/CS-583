@@ -11,6 +11,15 @@ public class SoundManager : MonoBehaviour
     public AudioClip wallHitClip;
     [Range(0f, 1f)] public float wallHitVolume = 1f;
 
+    public AudioClip enemyHitClip;
+    [Range(0f, 1f)] public float enemyHitVolume = 1f;
+
+    public AudioClip playerHitClip;
+    [Range(0f, 1f)] public float playerHitVolume = 1f;
+
+    public AudioClip buttonClickClip;
+    [Range(0f, 1f)] public float buttonClickVolume = 1f;
+
     void Awake()
     {
         if (Instance == null)
@@ -39,4 +48,19 @@ public class SoundManager : MonoBehaviour
 
     Destroy(tempAudio, clip.length);
     }
+    public void PlayEnemyHit(Vector3 position)
+    {
+        PlaySound(enemyHitClip, position, enemyHitVolume);
+    }
+
+    public void PlayPlayerHit(Vector3 position)
+    {
+        PlaySound(playerHitClip, position, playerHitVolume);
+    }
+
+    public void PlayButtonClick()
+    {
+        PlaySound(buttonClickClip, Vector3.zero, buttonClickVolume);
+    }
+
 }
