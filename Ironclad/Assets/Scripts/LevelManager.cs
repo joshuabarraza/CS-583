@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         levelCompletePanel.SetActive(false);
-        enemyCount = FindObjectsOfType<EnemyHealth>().Length;
+        enemyCount = FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None).Length;
     }
 
     public void EnemyDefeated()
