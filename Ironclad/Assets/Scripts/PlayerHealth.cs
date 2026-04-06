@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Game Over");
+        GameOverManager.Instance.ShowGameOver();
         // We'll hook up game over screen later
         gameObject.SetActive(false);
     }

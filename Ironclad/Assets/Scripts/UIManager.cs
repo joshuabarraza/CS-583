@@ -12,13 +12,12 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        // Always use the UIManager in the current scene
+        Instance = this;
     }
 
     void Start()
     {
-        // Initialize UI with current GameManager values on scene load
         if (GameManager.Instance != null)
         {
             UpdateScore(GameManager.Instance.shellCredits);
@@ -26,17 +25,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // Call this whenever credits change
     public void UpdateScore(int credits)
     {
         if (scoreText != null)
             scoreText.text = "Score: " + credits;
+        else
+            Debug.LogWarning("scoreText is null!");
     }
 
-    // Call this whenever health changes
     public void UpdateHealth(int health)
     {
         if (healthBar != null)
             healthBar.value = health;
+        else
+            Debug.LogWarning("healthBar is null!");
     }
 }

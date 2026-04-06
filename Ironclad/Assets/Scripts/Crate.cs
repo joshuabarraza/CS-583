@@ -3,7 +3,7 @@ using UnityEngine;
 public class Crate : MonoBehaviour
 {
     [Header("Settings")]
-    public int creditValue = 50; // credits awarded on destruction
+    public int creditValue = 25; // credits awarded on destruction
 
     void OnTriggerEnter2D(Collider2D other)
     {

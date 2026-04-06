@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Static instance accessible from any script
     public static GameManager Instance;
 
     [Header("Player Stats")]
@@ -22,10 +21,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Call this from any script to add credits
     public void AddCredits(int amount)
     {
         shellCredits += amount;
+
         if (UIManager.Instance != null)
             UIManager.Instance.UpdateScore(shellCredits);
     }
@@ -33,9 +32,12 @@ public class GameManager : MonoBehaviour
     public void TakeDamage(int amount)
     {
         playerHealth -= amount;
-        UIManager.Instance.UpdateHealth(playerHealth);
 
-        if (playerHealth <= 0) {
+        if (UIManager.Instance != null)
+            UIManager.Instance.UpdateHealth(playerHealth);
+
+        if (playerHealth <= 0)
+        {
             Debug.Log("Game Over");
         }
     }
