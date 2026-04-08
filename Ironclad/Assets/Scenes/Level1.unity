@@ -140,6 +140,10 @@ PrefabInstance:
       propertyPath: buttonClickClip
       value: 
       objectReference: {fileID: 8300000, guid: 57045df7ea9ec49e7aa3038c7499ef76, type: 3}
+    - target: {fileID: 2911720270571116953, guid: 331e1adff5adc491698ab91a2fe221da, type: 3}
+      propertyPath: m_Name
+      value: MenuButton
+      objectReference: {fileID: 0}
     - target: {fileID: 3485166294888453207, guid: 331e1adff5adc491698ab91a2fe221da, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -228,11 +232,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6905484605478855621, guid: 331e1adff5adc491698ab91a2fe221da, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 37054776}
+    - target: {fileID: 6905484605478855621, guid: 331e1adff5adc491698ab91a2fe221da, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253706171624373566, guid: 331e1adff5adc491698ab91a2fe221da, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 37054776}
+    - target: {fileID: 7253706171624373566, guid: 331e1adff5adc491698ab91a2fe221da, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 331e1adff5adc491698ab91a2fe221da, type: 3}
+--- !u!114 &37054776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2414095447009096408, guid: 331e1adff5adc491698ab91a2fe221da, type: 3}
+  m_PrefabInstance: {fileID: 37054775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc0cf9b0f10c4e9ebabff622eaa297f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverManager
 --- !u!1001 &53824668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -475,7 +506,15 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 57045df7ea9ec49e7aa3038c7499ef76, type: 3}
     - target: {fileID: 5626830831205052503, guid: 0fdb64b64d8694d5c9d26b7a313c532c, type: 3}
       propertyPath: armorCost
-      value: 75
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626830831205052503, guid: 0fdb64b64d8694d5c9d26b7a313c532c, type: 3}
+      propertyPath: speedCost
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626830831205052503, guid: 0fdb64b64d8694d5c9d26b7a313c532c, type: 3}
+      propertyPath: damageCost
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 5626830831205052503, guid: 0fdb64b64d8694d5c9d26b7a313c532c, type: 3}
       propertyPath: armorButton
@@ -1039,7 +1078,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade Armor (75 credits)
+  m_text: Upgrade Armor (200 credits)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94ada3aa961cd45b1b08de76f8b5f9c5, type: 2}
   m_sharedMaterial: {fileID: -2115881765841642609, guid: 94ada3aa961cd45b1b08de76f8b5f9c5, type: 2}
@@ -17927,7 +17966,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade Speed (100 credits)
+  m_text: Upgrade Speed (250 credits)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94ada3aa961cd45b1b08de76f8b5f9c5, type: 2}
   m_sharedMaterial: {fileID: -2115881765841642609, guid: 94ada3aa961cd45b1b08de76f8b5f9c5, type: 2}
@@ -18428,7 +18467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Upgrade Damage \n(150 Credits)"
+  m_text: "Upgrade Damage \n(250 Credits)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94ada3aa961cd45b1b08de76f8b5f9c5, type: 2}
   m_sharedMaterial: {fileID: -2115881765841642609, guid: 94ada3aa961cd45b1b08de76f8b5f9c5, type: 2}

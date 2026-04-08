@@ -40,6 +40,7 @@ public class GameOverManager : MonoBehaviour
         if (finalScoreText != null)
             finalScoreText.text = "Score: " + GameManager.Instance.shellCredits;
 
+        GameManager.Instance.shellCredits = 0;
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
     }
@@ -47,6 +48,7 @@ public class GameOverManager : MonoBehaviour
     public void Restart()
     {
         if (buttonClickClip != null) audioSource.PlayOneShot(buttonClickClip);
+        gameOverPanel.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -56,6 +58,7 @@ public class GameOverManager : MonoBehaviour
         if (buttonClickClip != null) audioSource.PlayOneShot(buttonClickClip);
         Time.timeScale = 1f;
         GameManager.Instance.shellCredits = 0;
+        gameOverPanel.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
 }
