@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f;
     public float lifetime = 3f;
 
     void Start()
@@ -17,7 +16,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             EnemyHealth eh = other.GetComponent<EnemyHealth>();
-            if (eh != null) eh.TakeDamage(1);
+            if (eh != null) eh.TakeDamage(GameManager.Instance.bulletDamage);
         }
         else if (other.CompareTag("Crate"))
         {
@@ -35,7 +34,7 @@ public class Bullet : MonoBehaviour
                 SoundManager.Instance.wallHitVolume
             );
         }
-        
+
         Destroy(gameObject);
     }
 }

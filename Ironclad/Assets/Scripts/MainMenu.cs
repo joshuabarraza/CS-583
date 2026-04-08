@@ -16,4 +16,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("LevelSelect");
     }
+
+    public void QuitGame()
+    {
+        audioSource.PlayOneShot(buttonClickClip);
+        Application.Quit();
+    }
 }

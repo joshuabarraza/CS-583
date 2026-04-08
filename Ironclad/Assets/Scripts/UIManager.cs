@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance != null)
         {
             UpdateScore(GameManager.Instance.shellCredits);
-            UpdateHealth(GameManager.Instance.playerHealth);
+            UpdateHealth(GameManager.Instance.maxHealth);
         }
     }
 
@@ -36,7 +36,11 @@ public class UIManager : MonoBehaviour
     public void UpdateHealth(int health)
     {
         if (healthBar != null)
+        {
+            // keep the slider max in sync so the bar scales correctly after armor upgrades
+            healthBar.maxValue = GameManager.Instance.maxHealth;
             healthBar.value = health;
+        }
         else
             Debug.LogWarning("healthBar is null!");
     }

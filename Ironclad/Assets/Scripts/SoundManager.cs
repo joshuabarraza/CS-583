@@ -25,6 +25,7 @@ public class SoundManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            transform.SetParent(null); // must be root level for DontDestroyOnLoad to work
             DontDestroyOnLoad(gameObject);
         }
         else

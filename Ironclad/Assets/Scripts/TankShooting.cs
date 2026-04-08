@@ -5,11 +5,10 @@ public class TankShooting : MonoBehaviour
     [Header("Shooting Settings")]
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float bulletSpeed = 10f;
     public float fireRate = 0.3f;
 
     private float nextFireTime = 0f;
-    private TankAudio tankAudio; // reference to audio script
+    private TankAudio tankAudio;
 
     void Start()
     {
@@ -29,9 +28,10 @@ public class TankShooting : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = firePoint.up * bulletSpeed;
 
-        // Play shoot sound
+        // use upgraded bullet speed from GameManager
+        rb.linearVelocity = firePoint.up * GameManager.Instance.bulletSpeed;
+
         if (tankAudio != null)
             tankAudio.PlayShoot();
     }

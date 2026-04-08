@@ -8,11 +8,17 @@ public class GameManager : MonoBehaviour
     public int shellCredits = 0;
     public int playerHealth = 3;
 
+    [Header("Upgrades")]
+    public int bulletDamage = 1;
+    public float bulletSpeed = 10f;
+    public int maxHealth = 3;
+
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            transform.SetParent(null); // must be root level for DontDestroyOnLoad to work
             DontDestroyOnLoad(gameObject);
         }
         else

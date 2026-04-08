@@ -11,6 +11,10 @@ public class LevelManager : MonoBehaviour
     public GameObject hudPanel;
     public TextMeshProUGUI finalScoreText;
 
+    [Header("Audio")]
+    public AudioClip buttonClickClip;
+    private AudioSource audioSource;
+
     private int enemyCount;
 
     void Awake()
@@ -20,9 +24,14 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
         levelCompletePanel.SetActive(false);
         enemyCount = FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None).Length;
     }
+
 
     public void EnemyDefeated()
     {
@@ -35,27 +44,47 @@ public class LevelManager : MonoBehaviour
 
     void ShowLevelComplete()
     {
-        // Hide HUD
         if (hudPanel != null)
             hudPanel.SetActive(false);
 
-        // Show final score
         if (finalScoreText != null)
-            finalScoreText.text = "Final Score: " + GameManager.Instance.shellCredits + " SC";
+            finalScoreText.text = "Final Score: " + GameManager.Instance.shellCredits;
 
         levelCompletePanel.SetActive(true);
+    
+        if (UpgradeManager.Instance != null)
+            UpgradeManager.Instance.ShowUpgrades();
+
         Time.timeScale = 0f;
     }
 
     public void NextLevel()
     {
+        if (buttonClickClip != null) audioSource.PlayOneShot(buttonClickClip);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Level1");
+        UpgradeManager.Instance.ResetUpgradeButtons();
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "Tutorial")
+            SceneManager.LoadScene("Level1");
+        else if (currentScene == "Level1")
+            SceneManager.LoadScene("Level2");
+    }
+
+    public void RetryLevel()
+    {
+        if (buttonClickClip != null) audioSource.PlayOneShot(buttonClickClip);
+        Time.timeScale = 1f;
+        if (UpgradeManager.Instance != null)
+            UpgradeManager.Instance.ResetUpgradeButtons();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GoToMenu()
     {
+        if (buttonClickClip != null) audioSource.PlayOneShot(buttonClickClip);
+        GameManager.Instance.shellCredits = 0;
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Intro");
+        SceneManager.LoadScene("MainMenu");
     }
 }
